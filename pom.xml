@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ni2.maskatel</groupId>
+    <artifactId>SmartBillingImport</artifactId>
+    <packaging>jar</packaging>
+    <version>0.1-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!--
+        https://www.mkyong.com/java/json-simple-example-read-and-write-json/
+        https://www.mkyong.com/java/java-properties-file-examples/
+        http://stackoverflow.com/questions/2591098/how-to-parse-json-in-java
+        -->
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <!--
+        http://opencsv.sourceforge.net
+        -->
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>3.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.bytefish</groupId>
+            <artifactId>pgbulkinsert</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <!--
+        http://www.oracle.com/technetwork/articles/java/json-1973242.html
+        https://www.tutorialspoint.com/json/json_java_example.htm
+        http://crunchify.com/java-how-to-parse-jsonobject-and-jsonarrays/
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160810</version>
+        </dependency>
+        -->
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>default</id>
+            <build>
+                <finalName>${artifactId}</finalName>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <version>2.4</version>
+                        <configuration>
+                            <finalName>${artifactId}</finalName>
+                            <outputDirectory>deployments</outputDirectory>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
